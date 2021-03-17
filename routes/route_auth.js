@@ -10,11 +10,12 @@ const {
   getUserById,
 } = require("../controller/controller_auth");
 
+Router.param("userId", getUserById);
+
 Router.post("/signup", signup);
 Router.post("/signin", signin);
 Router.get("/signout", signout);
 
-Router.get("/testroute", isSignedIn, (req, res) => {
-  res.json({ message: "A protected route!" });
-});
+
+Router.get("/testroute/:userId", isSignedIn,isAuthenticated,(req,res)=>{res.json({success:"wokred"})} );
 module.exports = Router;

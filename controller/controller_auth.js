@@ -20,7 +20,7 @@ exports.signup = (req, res) => {
 
   user.save((err, user) => {
     if (err) {
-      return res.json({ error: "User not saved" });
+      return res.json({ error: "User not saved", err });
     }
     res.json(user);
   });
@@ -56,8 +56,12 @@ exports.isSignedIn = expressJwt({
   userProperty: "auth",
 });
 
+
 exports.isAuthenticated = (req, res, next) => {
   let checker = req.profile && req.auth && req.auth.id == req.profile._id;
+  console.log(req.auth)
+  console.log(req.profile)
+  console.log(checker)
 
   if (!checker) {
     return res.status(400).json({

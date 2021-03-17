@@ -10,7 +10,7 @@ const PORT = process.env.port || 3000;
 app.use(bodyparser.json());
 
 //connecting with database
-db = "mongodb://localhost:27017/MyDb";
+db = "mongodb://localhost:27017/newdb";
 mongoose
   .connect(db, {
     useNewUrlParser: true,
@@ -29,7 +29,7 @@ app.use("/api", authRoute);
 app.use("/api", emailRoute);
 
 app.get("/", (req, res) => {
-  res.json({ messsage: "working" });
+  res.json({ messsage: "Success" });
 });
 app.listen(PORT, () => {
   console.log(`The app is running at ${PORT}`);
