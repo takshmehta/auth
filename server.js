@@ -31,6 +31,8 @@ app.use("/api", emailRoute);
 app.get("/", (req, res) => {
   res.json({ messsage: "Success" });
 });
+
+//adding this comment for testing purpose
 app.listen(PORT, () => {
   console.log(`The app is running at ${PORT}`);
 });
